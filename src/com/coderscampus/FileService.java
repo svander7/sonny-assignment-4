@@ -8,7 +8,6 @@ import java.io.IOException;
 
 public class FileService {
 
-	// Method to read file and return Array
 	public Student[] readStudentFile(String filename) {
 		Student[] studentObjectArray = new Student[150];
 		String[] studentStringArray = new String[4];
@@ -22,13 +21,12 @@ public class FileService {
 				i++;
 			}
 		} catch (Exception e) {
-			System.out.println("There was an exception while reading the file.");
+			System.out.println("There was an error reading the file.");
 			e.printStackTrace();
 		}
 		return studentObjectArray;
 	}
 
-	// write csv method
 	public void writeStudentCsv(Student[] inputStudentArray, String exportFilename) {
 
 		try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(exportFilename))) {

@@ -6,7 +6,7 @@ public class ClassSortApp {
 
 		FileService fileService = new FileService();
 		StudentList studentService = new StudentList(fileService);
-		StudentCourse reportService = new StudentCourse(studentService, fileService);
+		Student reportService = new Student(studentService, fileService);
 
 		reportService.courseReport("COMPSCI", "course1.csv");
 		reportService.courseReport("APMTH", "course2.csv");

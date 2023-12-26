@@ -13,6 +13,20 @@ public class Student implements Comparable<Student> {
 		this.course = studentInputArray[2];
 		this.grade = studentInputArray[3];
 	}
+	
+	private StudentList studentService;
+	private FileService fileService;
+
+	public Student(StudentList studentService, FileService fileService) {
+		this.studentService = studentService;
+		this.fileService = fileService;
+	}
+
+	public void courseReport(String course, String exportFilename) {
+		Student[] courseStudents = studentService.filterStudentsByCourse(course);
+
+		fileService.writeStudentCsv(courseStudents, exportFilename);
+	}
 
 	public String getInfo() {
 		return studentId + ", " + studentName + ", " + course + ", " + grade;
@@ -48,6 +62,22 @@ public class Student implements Comparable<Student> {
 
 	public void setGrade(String grade) {
 		this.grade = grade;
+	}
+
+	public StudentList getStudentService() {
+		return studentService;
+	}
+
+	public void setStudentService(StudentList studentService) {
+		this.studentService = studentService;
+	}
+
+	public FileService getFileService() {
+		return fileService;
+	}
+
+	public void setFileService(FileService fileService) {
+		this.fileService = fileService;
 	}
 
 	@Override
